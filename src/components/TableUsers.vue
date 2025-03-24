@@ -1,8 +1,14 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user.store';
 import { mainApi } from '@/api/main.api';
 const userStore = useUserStore();
-await userStore.fetchUsers();
+const loading = ref(true);
+onMounted(async () => {
+    await userStore.fetchUsers();
+    loading.value = false;
+})
+
 const showError = async () => {
     await mainApi.getUsersWithError();
 }
@@ -14,7 +20,7 @@ const showError = async () => {
             <h1 class="title"> User Table </h1>
             <div class="btn" @click="showError">wywołaj request z błędem</div>
         </div>
-        <table>
+        <table v-if="!loading">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -36,7 +42,8 @@ const showError = async () => {
                 </tr>
             </tbody>
         </table>
-        <div class="loader">Pobieranie danych ...</div>
+        <div class="loader" v-if="loading">Pobieranie danych ...</div>
+
     </div>
 </template>
 
