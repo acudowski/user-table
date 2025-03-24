@@ -5,8 +5,14 @@ import { mainApi } from '@/api/main.api';
 const userStore = useUserStore();
 const loading = ref(true);
 onMounted(async () => {
-    await userStore.fetchUsers();
-    loading.value = false;
+    try {
+        await userStore.fetchUsers();
+        loading.value = false;
+    } catch (error) {
+        loading.value = false;
+        console.log(error)
+        throw error;
+    }
 })
 
 const showError = async () => {
