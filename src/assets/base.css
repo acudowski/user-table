@@ -1,0 +1,74 @@
+:root {
+  --c-white: #ffffff;
+  --c-black: #181818;
+  --c-red: #B71C1C;
+  --c-primary: #304FFE;
+  --c-grey: #ccc;
+  --c-grey-light: #eee;
+  --c-grey-s-light: #f9f9f9;
+  --l-space: 20px;
+  --l-width: 1140px;
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--c-white);
+  --color-text: var(--c-black);
+  --color-error: var(--c-red);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--c-black);
+    --color-text: var(--c-white);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-style: normal;
+  font-size: inherit;
+}
+
+.bold {
+  font-weight: 700;
+}
